@@ -18,7 +18,7 @@ $user = new User($db);
 
 $client = new \Google\Client();
 $client->setClientId('128228478620-o2d294sberho44jpetq6laog0ajgk2v8.apps.googleusercontent.com');
-$client->setClientSecret('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');
+// $client->setClientSecret('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');
 $client->setRedirectUri('http://localhost/sign-in-with/public/callback.php');
 $client->addScope('email');
 $client->addScope('profile'); 
