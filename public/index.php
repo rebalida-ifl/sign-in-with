@@ -35,7 +35,7 @@ if(!isset($_SESSION['id'])){
         <header>
         <nav class="navbar bg-body-tertiary">
             <div class="container">
-                <a class="navbar-brand fw-bold fs-2 text">Welcome, <?= htmlspecialchars($_SESSION['username']) ?> !</a>
+                <a class="navbar-brand fw-bold fs-2 text">Welcome, <?= htmlspecialchars($_SESSION['username'] ?? 'Guest'); ?> !</a>
                 <a href="logout.php" class="btn btn-danger">Logout</a> 
                 </form>
             </div>

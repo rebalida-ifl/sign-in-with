@@ -4,6 +4,7 @@ namespace App;
 
 require_once '../src/Database.php';
 require_once '../src/User.php';
+require_once '../vendor/autoload.php';
 
 Use PDO;
 
@@ -13,6 +14,16 @@ $database = new Database();
 $db = $database->connect();
 
 $user = new User($db);
+
+
+$client = new \Google\Client();
+$client->setClientId('128228478620-o2d294sberho44jpetq6laog0ajgk2v8.apps.googleusercontent.com');
+$client->setClientSecret('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');
+$client->setRedirectUri('http://localhost/sign-in-with/public/callback.php');
+$client->addScope('email');
+$client->addScope('profile'); 
+
+
 
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
         $user->email = $_POST['email'];
@@ -27,6 +38,9 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
             echo 'Failed';
         }
     }
+
+// $googleClient = getGoogleClient();
+// $googleLoginUrl = $googleClient->createAuthUrl(); 
 
 ?>
 
@@ -48,27 +62,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
             integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
             crossorigin="anonymous"
         />
-
-        <!-- <style>
-            .gradient {
-                background-image: linear-gradient(
-                    70deg,
-                    hsl(294deg 84% 27%) 0%,
-                    hsl(304deg 100% 26%) 8%,
-                    hsl(312deg 100% 30%) 17%,
-                    hsl(318deg 100% 33%) 25%,
-                    hsl(324deg 100% 36%) 33%,
-                    hsl(329deg 100% 39%) 42%,
-                    hsl(333deg 100% 41%) 50%,
-                    hsl(337deg 100% 44%) 58%,
-                    hsl(341deg 100% 46%) 67%,
-                    hsl(345deg 100% 47%) 75%,
-                    hsl(349deg 100% 48%) 83%,
-                    hsl(353deg 100% 49%) 92%,
-                    hsl(0deg 100% 50%) 100%
-                );
-            }
-        </style> -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     </head>
 
     <body>
@@ -92,7 +86,16 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
                                 <input type="password" name="password" class="form-control" placeholder="Password" required>
                             </div>
                             <button type="submit" class="btn btn-primary w-100">Login</button>
-                            <a href="register.php" class="text-center">Sign Up</a> 
+
+                            <div class="row mt-2">
+                                <div class="col">
+                                    <a href="register.php" class="text-center">Sign Up</a> 
+                                </div>
+                                <div class="col">
+                                    <a href="<?= $client->createAuthUrl(); ?>"><i class="bi bi-google h5"></i></a>
+                                    <a href="<?= $client->createAuthUrl(); ?>"><i class="bi bi-facebook h5"></i></a>
+                                </div>
+                            </div>
                         </form>
                     </div>
                     
