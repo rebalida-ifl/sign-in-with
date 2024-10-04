@@ -6,7 +6,7 @@ require_once __DIR__ . '/../vendor/autoload.php';
 
 session_start();
 
-// error_reporting(E_ALL & ~E_DEPRECATED & ~E_NOTICE);
+error_reporting(E_ALL & ~E_DEPRECATED & ~E_NOTICE);
 
 
 $fb = new \Facebook\Facebook([
@@ -42,7 +42,7 @@ if(isset($accessToken)){
         echo "<pre>";
     print_r($user);
     echo "</pre>";
-    
+
         $_SESSION['id'] = $user['id'];
         $_SESSION['username'] = $user['name'];
 
