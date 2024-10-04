@@ -2,6 +2,9 @@
 
 namespace App;
 
+error_reporting(E_ALL & ~E_DEPRECATED); 
+
+
 require_once '../src/Database.php';
 require_once '../src/User.php';
 require_once '../vendor/autoload.php';
@@ -18,11 +21,20 @@ $user = new User($db);
 
 $client = new \Google\Client();
 $client->setClientId('128228478620-o2d294sberho44jpetq6laog0ajgk2v8.apps.googleusercontent.com');
-// $client->setClientSecret('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');
+$client->setClientSecret('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');
 $client->setRedirectUri('http://localhost/sign-in-with/public/callback.php');
 $client->addScope('email');
 $client->addScope('profile'); 
 
+$fb = new \Facebook\Facebook([
+    'app_id' => '513392914943900',
+    'app_secret' => 'c6e7da7e7ee58ffe62a19cdd8cff67a7',
+    'default_graph_version' => 'v10.0', 
+]);
+
+$helper = $fb->getRedirectLoginHelper();
+$permissions = ['email']; // Optional permissions
+$loginUrl = $helper->getLoginUrl('http://localhost/sign-in-with/public/fb-callback.php', $permissions);
 
 
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
@@ -92,8 +104,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
                                     <a href="register.php" class="text-center">Sign Up</a> 
                                 </div>
                                 <div class="col">
-                                    <a href="<?= $client->createAuthUrl(); ?>"><i class="bi bi-google h5"></i></a>
-                                    <a href="<?= $client->createAuthUrl(); ?>"><i class="bi bi-facebook h5"></i></a>
+                                    <a href="<?= $client->createAuthUrl(); ?>"><i class="bi bi-google text-white px-3 h5"></i></a>
+                                    <a href="<?= htmlspecialchars($loginUrl); ?>"><i class="bi bi-facebook text-white px-3 h5"></i></a>
                                 </div>
                             </div>
                         </form>

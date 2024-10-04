@@ -2,12 +2,17 @@
 
 namespace App;
 
+
 session_start();
 
-if(!isset($_SESSION['id'])){
+
+if(!isset($_SESSION['id']) || !isset($_SESSION['username'])){
     header('Location: login.php');
     exit();
 }
+
+$email = $_SESSION['email'] ?? 'No email';
+$username = $_SESSION['username'];
 
 ?>
 
@@ -42,6 +47,8 @@ if(!isset($_SESSION['id'])){
         </nav>
         </header>
         <main>
+            <h1>User Dashboard</h1>
+            <p>Your email: <?= htmlspecialchars($email); ?></p>
         </main>
         <footer>
             <!-- place footer here -->
