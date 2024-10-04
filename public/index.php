@@ -47,8 +47,6 @@ $username = $_SESSION['username'];
         </nav>
         </header>
         <main>
-            <h1>User Dashboard</h1>
-            <p>Your email: <?= htmlspecialchars($email); ?></p>
         </main>
         <footer>
             <!-- place footer here -->

@@ -53,31 +53,35 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
         <header>
             <!-- place navbar here -->
         </header>
-        <main class="d-flex align-items-center justify-content-center vh-100">
-            <div class="container py-5 rounded bg-dark">
-                <div class="row text-white">
-                    <div class="col-6 d-flex align-items-center justify-content-center">
-                        <h1>Register</h1>
+        <main>
+            <section class="container d-flex justify-content-center align-items-center" style="height: 100vh;">
+                <div class="container">
+                    <div class="text-center">
+                        <h1 class="fw-bold">Sign Up</h1>
+                        <p>Already have an Account? <a href="login.php" class="text-center">Sign In</a> </p>
                     </div>
 
-                    <div class="col-6">
-                        <form action="register.php" method="POST" class="mx-auto" style="max-width: 300px;">
-                            <div class="mb-3">
-                                <input type="email" name="email" class="form-control" placeholder="Email" required>
+                    <div class="d-flex align-items-center justify-content-center">
+
+                        <form class="w-50" action="register.php" method="POST">
+                            <div class="mb-4">
+                                <input type="email" name="email" class="form-control form-control-lg" id="email" placeholder="Email" required>
                             </div>
-                            <div class="mb-3">
-                                <input type="username" name="username" class="form-control" placeholder="Username" required>
+
+                            <div class="mb-4">
+                                <input type="username" name="username" class="form-control form-control-lg" placeholder="Username" required>
                             </div>
-                            <div class="mb-3">
-                                <input type="password" name="password" class="form-control" placeholder="Password" required>
+
+                            <div class="mb-4">
+                                <input type="password" name="password" class="form-control form-control-lg" id="password" placeholder="Password" required>
                             </div>
-                            <button type="submit" class="btn btn-primary w-100">Register</button>
-                            <a href="login.php" class="text-center">Log In</a> 
+                            <button type="submit" class="btn btn-dark btn-lg border border-black rounded-0 w-100">Register</button>
                         </form>
+
                     </div>
-                    
+
                 </div>
-            </div>
+            </section>
         </main>
         <footer>
             <!-- place footer here -->

@@ -51,8 +51,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
         }
     }
 
-// $googleClient = getGoogleClient();
-// $googleLoginUrl = $googleClient->createAuthUrl(); 
 
 ?>
 
@@ -82,37 +80,38 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
             
         </header>
 
-        <main class="d-flex align-items-center justify-content-center vh-100">
-            <div class="container py-5 rounded bg-dark">
-                <div class="row text-white">
-                    <div class="col-6 d-flex align-items-center justify-content-center">
-                        <h1>Login</h1>
+        <main>
+            <section class="container d-flex justify-content-center align-items-center" style="height: 100vh;">
+                <div class="container">
+                    <div class="text-center">
+                        <h1 class="fw-bold">Sign In</h1>
+                        <p>Don't have an account? <a href="register.php" class="text-center">Sign Up</a> </p>
                     </div>
-
-                    <div class="col-6">
-                        <form action="login.php" method="POST" class="mx-auto" style="max-width: 300px;">
-                            <div class="mb-3">
-                                <input type="email" name="email" class="form-control" placeholder="Email" required>
+                    <div class="row my-5">
+                        <div class="col-6 d-flex align-items-center justify-content-center">
+                        <form class="w-75" action="login.php" method="POST">
+                            <div class="mb-4">
+                                <input type="email" class="form-control form-control-lg" id="email" placeholder="Email">
                             </div>
-                            <div class="mb-3">
-                                <input type="password" name="password" class="form-control" placeholder="Password" required>
+                            <div class="mb-4">
+                                <input type="password" class="form-control form-control-lg" id="password" placeholder="Password">
                             </div>
-                            <button type="submit" class="btn btn-primary w-100">Login</button>
-
-                            <div class="row mt-2">
-                                <div class="col">
-                                    <a href="register.php" class="text-center">Sign Up</a> 
-                                </div>
-                                <div class="col">
-                                    <a href="<?= $client->createAuthUrl(); ?>"><i class="bi bi-google text-white px-3 h5"></i></a>
-                                    <a href="<?= htmlspecialchars($loginUrl); ?>"><i class="bi bi-facebook text-white px-3 h5"></i></a>
-                                </div>
-                            </div>
+                            <button type="submit" class="btn btn-dark btn-lg border border-black rounded-0 w-100">Login</button>
                         </form>
+                        </div>
+                        <div class="col-6 d-flex align-items-center justify-content-center">
+
+                            <div class="d-flex flex-column"> 
+                               
+                            <a href="<?= $client->createAuthUrl(); ?>"class="btn btn-outline-dark btn-lg border border-black rounded-0 my-2"><i class="bi bi-google text-danger pe-3 h5"></i>Sign In With Google</a>
+                            <a href="<?= htmlspecialchars($loginUrl); ?>"class="btn btn-outline-dark btn-lg border border-black rounded-0 my-2"><i class="bi bi-facebook text-danger px-2 h5"></i>Sign In With Facebook</a>    
+
+                            </div>
+                            
+                        </div>
                     </div>
-                    
                 </div>
-            </div>
+            </section>
         </main>
         
         <footer>
