@@ -47,7 +47,7 @@ $username = $_SESSION['username'];
         </nav>
         </header>
         <main>
-        </main>
+        </main> 
         <footer>
             <!-- place footer here -->
         </footer>
